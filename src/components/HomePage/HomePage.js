@@ -15,6 +15,7 @@ class HomePage extends Component {
 
         this.setState({ movies: response.data.results })
         // console.log(this.state.movies)
+        console.log('first mount')
     }
 
     render() {

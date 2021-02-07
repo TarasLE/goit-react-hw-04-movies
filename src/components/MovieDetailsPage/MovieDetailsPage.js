@@ -1,10 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense, lazy } from 'react'
 import { Route, NavLink, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
 import shortid from 'shortid'
-import Cast from '../Cast/Cast'
-import Reviews from '../Reviews/Reviews'
+// import Cast from '../Cast/Cast'
+// import Reviews from '../Reviews/Reviews'
+
+const Cast = lazy(() =>
+    import('../Cast/Cast.js' /* webpackChunkName: "mivie-cast" */)
+)
+
+const Reviews = lazy(() =>
+    import('../Reviews/Reviews.js' /* webpackChunkName: "mivie-review" */)
+)
 
 class MovieDetailsPage extends Component {
     state = {
@@ -104,11 +112,13 @@ class MovieDetailsPage extends Component {
                             </li>
                         </ul>
                     </div>
-                    <Route path="/movies/:movieId/cast" component={Cast} />
-                    <Route
-                        path="/movies/:movieId/reviews"
-                        component={Reviews}
-                    />
+                    <Suspense fallback={<h1>Loading...</h1>}>
+                        <Route path="/movies/:movieId/cast" component={Cast} />
+                        <Route
+                            path="/movies/:movieId/reviews"
+                            component={Reviews}
+                        />
+                    </Suspense>
                 </div>
             )
         )
