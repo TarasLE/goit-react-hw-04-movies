@@ -1,6 +1,7 @@
 import { React, Component } from 'react'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
+import styles from './Reviews.module.css'
 
 class Reviews extends Component {
     state = {
@@ -23,7 +24,7 @@ class Reviews extends Component {
                 {/* <h1>"Rewiev"</h1> */}
                 <ul>
                     {this.state.reviews.map((review) => (
-                        <li key={review.id}>
+                        <li key={review.id} className={styles.ReviewAuthor}>
                             <h1>{review.author}</h1>
                             <p>{review.content}</p>
                         </li>

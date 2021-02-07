@@ -1,0 +1,15 @@
+.MoviePageContainer {
+    padding: 10px;
+}
+.SearchInput {
+    width: 400px;
+    height: 30px;
+}
+
+.SearchButton {
+    height: 35px;
+}
+
+.SearchItem {
+    margin: 5px;
+}

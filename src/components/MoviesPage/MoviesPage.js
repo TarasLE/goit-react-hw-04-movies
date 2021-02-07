@@ -2,6 +2,7 @@ import { React, Component } from 'react'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
 import { withRouter, NavLink } from 'react-router-dom'
+import styles from './MoviesPage.module.css'
 
 // MoviesPage.propTypes = {}
 
@@ -47,7 +48,7 @@ class MoviesPage extends Component {
         // console.log(this.props.match.path)
         // console.log(this.props.match.params.url)
         return (
-            <div>
+            <div className={styles.MoviePageContainer}>
                 {/* <h1>"MoviesPage"</h1> */}
                 <form>
                     <input
@@ -57,12 +58,14 @@ class MoviesPage extends Component {
                         autoFocus
                         placeholder="Search movies"
                         onChange={this.handleInput}
+                        className={styles.SearchInput}
                     />
 
                     <button
                         type="submit"
                         // className={styles.SearchFormButton}
                         onClick={this.handleSubmit}
+                        className={styles.SearchButton}
                     >
                         <span>Search</span>
                     </button>
@@ -81,7 +84,9 @@ class MoviesPage extends Component {
                                         },
                                     }}
                                 >
-                                    <p>{movie.title}</p>
+                                    <p className={styles.SearchItem}>
+                                        {movie.title}
+                                    </p>
                                 </NavLink>
                             </li>
                         ))}

@@ -1,0 +1,46 @@
+.BackButton {
+    /* display: block; */
+    padding: 10px;
+    /* margin-left: 10px; */
+    margin-bottom: 10px;
+}
+
+.MovieDetailsContainer {
+    padding: 10px;
+    /* display: flex; */
+}
+
+.MovieDetails {
+    display: flex;
+}
+
+.MoviePoster {
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.MovieDescrtiption {
+    padding-left: 10px;
+}
+
+.MovieTitle {
+    margin-top: 0;
+}
+
+.MovieGenres {
+    padding-left: 0;
+    display: flex;
+}
+
+.GenreTitles {
+    list-style: none;
+    margin-right: 20px;
+}
+
+.AdditionatIfoLinkActive {
+    color: red;
+}
+
+.AdditionatIfoLink {
+}

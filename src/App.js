@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react'
-import './App.css'
+// import './App.css'
 import { Route, NavLink, Switch } from 'react-router-dom'
+import styles from './App.module.css'
 // import HomePage from './components/HomePage/HomePage'
 // import MoviesPage from './components/MoviesPage/MoviesPage'
 // import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage'
@@ -30,14 +31,25 @@ const App = () => (
     // </div>
 
     <>
-        <ul>
-            <li>
-                <NavLink exact to="/">
-                    Home
+        <ul className={styles.HeaderContainer}>
+            <li className={styles.HeaderTitles}>
+                <NavLink
+                    exact
+                    to="/"
+                    className={styles.HeaderLink}
+                    activeClassName={styles.HeaderLinkActive}
+                >
+                    <h3>Home</h3>
                 </NavLink>
             </li>
-            <li>
-                <NavLink to="/movies">Movies</NavLink>
+            <li className={styles.HeaderTitles}>
+                <NavLink
+                    to="/movies"
+                    className={styles.HeaderLink}
+                    activeClassName={styles.HeaderLinkActive}
+                >
+                    <h3>Movies</h3>
+                </NavLink>
             </li>
         </ul>
         {/* <HomePage /> */}

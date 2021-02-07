@@ -3,6 +3,7 @@ import { Route, NavLink, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
 import shortid from 'shortid'
+import styles from './MovieDetailsPage.module.css'
 // import Cast from '../Cast/Cast'
 // import Reviews from '../Reviews/Reviews'
 
@@ -55,30 +56,44 @@ class MovieDetailsPage extends Component {
 
         return (
             this.state.movie && (
-                <div>
-                    <button type="button" onClick={this.clickBack}>
+                <div className={styles.MovieDetailsContainer}>
+                    <button
+                        type="button"
+                        onClick={this.clickBack}
+                        className={styles.BackButton}
+                    >
                         Go back
                     </button>
-                    <div>
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`}
-                            alt=""
-                        />
-                    </div>
-                    <div>
-                        <h1>{this.state.movie.title}</h1>
-                        <p>
-                            User score:
-                            <span> {this.state.movie.vote_average} </span>
-                        </p>
-                        <h2>Overview</h2>
-                        <p>{this.state.movie.overview}</p>
-                        <h2>Genres</h2>
-                        <ul>
-                            {this.state.movie.genres.map((genre) => (
-                                <li key={genre.id}>{genre.name}</li>
-                            ))}
-                        </ul>
+                    <div className={styles.MovieDetails}>
+                        <div>
+                            <img
+                                className={styles.MoviePoster}
+                                src={`https://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`}
+                                alt=""
+                            />
+                        </div>
+                        <div className={styles.MovieDescrtiption}>
+                            <h1 className={styles.MovieTitle}>
+                                {this.state.movie.title}
+                            </h1>
+                            <p>
+                                User score:
+                                <span> {this.state.movie.vote_average} </span>
+                            </p>
+                            <h2>Overview</h2>
+                            <p>{this.state.movie.overview}</p>
+                            <h2>Genres</h2>
+                            <ul className={styles.MovieGenres}>
+                                {this.state.movie.genres.map((genre) => (
+                                    <li
+                                        key={genre.id}
+                                        className={styles.GenreTitles}
+                                    >
+                                        {genre.name}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                     <div>
                         <h2>Adittional information</h2>
@@ -92,6 +107,11 @@ class MovieDetailsPage extends Component {
                                                 .from,
                                         },
                                     }}
+                                    // className={styles.AdditionatIfoLink}
+                                    className={styles.AdditionatIfoLink}
+                                    activeClassName={
+                                        styles.AdditionatIfoLinkActive
+                                    }
                                 >
                                     Cast
                                 </NavLink>
@@ -106,6 +126,10 @@ class MovieDetailsPage extends Component {
                                                 .from,
                                         },
                                     }}
+                                    className={styles.AdditionatIfoLink}
+                                    activeClassName={
+                                        styles.AdditionatIfoLinkActive
+                                    }
                                 >
                                     Reviews
                                 </NavLink>

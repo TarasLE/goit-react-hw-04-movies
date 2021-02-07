@@ -1,0 +1,15 @@
+.ListHeader {
+    padding-left: 10px;
+}
+
+.MovieLink {
+    text-decoration: none;
+}
+
+.MovieLinkActive {
+    color: red;
+}
+
+.MovieItem {
+    margin-bottom: 5px;
+}

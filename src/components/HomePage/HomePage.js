@@ -1,7 +1,8 @@
 import { React, Component } from 'react'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
-import { Link, withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
+import styles from './HomePage.module.css'
 
 class HomePage extends Component {
     state = {
@@ -15,37 +16,41 @@ class HomePage extends Component {
 
         this.setState({ movies: response.data.results })
         // console.log(this.state.movies)
-        console.log('first mount')
+        // console.log('first mount')
     }
 
     render() {
         // console.log(this.props.match.url)
         return (
             <div>
-                <h1>Trending today</h1>
+                <h1 className={styles.ListHeader}>Trending today</h1>
                 <ul>
                     {this.state.movies.map((movie) =>
                         movie.title ? (
-                            <li key={movie.id}>
-                                <Link
+                            <li key={movie.id} className={styles.MovieItem}>
+                                <NavLink
                                     to={{
                                         pathname: `/movies/${movie.id}`,
                                         state: { from: this.props.location },
                                     }}
+                                    className={styles.MovieLink}
+                                    activeClassName={styles.MovieLinkActive}
                                 >
                                     {movie.title}
-                                </Link>
+                                </NavLink>
                             </li>
                         ) : (
-                            <li key={movie.id}>
-                                <Link
+                            <li key={movie.id} className={styles.MovieItem}>
+                                <NavLink
                                     to={{
                                         pathname: `/movies/${movie.id}`,
                                         state: { from: this.props.location },
                                     }}
+                                    className={styles.MovieLink}
+                                    activeClassName={styles.MovieLinkActive}
                                 >
                                     {movie.name}
-                                </Link>
+                                </NavLink>
                             </li>
                         )
                     )}
