@@ -43,7 +43,7 @@ class HomePage extends Component {
                                         state: { from: this.props.location },
                                     }}
                                 >
-                                    {movie.name}{' '}
+                                    {movie.name}
                                 </Link>
                             </li>
                         )

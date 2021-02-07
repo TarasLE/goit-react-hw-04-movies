@@ -23,7 +23,7 @@ class Reviews extends Component {
                 {/* <h1>"Rewiev"</h1> */}
                 <ul>
                     {this.state.reviews.map((review) => (
-                        <li>
+                        <li key={review.id}>
                             <h1>{review.author}</h1>
                             <p>{review.content}</p>
                         </li>

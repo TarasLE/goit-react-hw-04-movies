@@ -1,6 +1,8 @@
 import { React, Component } from 'react'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
+import logo from '../../img/no_user_logo.png'
+// import no_user_logo from './img/no_user_logo.png'
 
 class Cast extends Component {
     state = {
@@ -25,10 +27,14 @@ class Cast extends Component {
                     <ul>
                         {this.state.cast.map((actor) => (
                             <li key={actor.id}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                                    alt=""
-                                />
+                                {actor.profile_path ? (
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                                        alt=""
+                                    />
+                                ) : (
+                                    <img src={logo} alt="" />
+                                )}
                                 <p>{actor.name}</p>
                             </li>
                         ))}
