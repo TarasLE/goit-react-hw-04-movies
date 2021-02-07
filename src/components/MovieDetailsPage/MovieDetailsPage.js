@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import Axios from 'axios'
 import shortid from 'shortid'
 import styles from './MovieDetailsPage.module.css'
-// import Cast from '../Cast/Cast'
-// import Reviews from '../Reviews/Reviews'
 
 const Cast = lazy(() =>
     import('../Cast/Cast.js' /* webpackChunkName: "mivie-cast" */)
@@ -27,10 +25,6 @@ class MovieDetailsPage extends Component {
     clickBack = (event) => {
         event.preventDefault()
         this.props.history.push(this.props.location.state.from)
-
-        // event.preventDefault()
-
-        // this.setState({ searchName: event.currentTarget.value })
     }
 
     async componentDidMount() {
@@ -40,20 +34,8 @@ class MovieDetailsPage extends Component {
         )
 
         this.setState({ movie: response.data })
-        // console.log(this.state.movie)
-        // console.log(response.data)
     }
     render() {
-        // const { title } = this.state.movie.title
-        // const { name } = this.state.movie.title
-        // console.log('from details')
-        // console.log(this.state.movie)
-        // console.log(this.state.movie)
-        // console.log(this.props.match.url)
-        // console.log(this.genId())
-        // const key = this.shortid.generate()
-        // console.log(this.props)
-
         return (
             this.state.movie && (
                 <div className={styles.MovieDetailsContainer}>
@@ -107,7 +89,6 @@ class MovieDetailsPage extends Component {
                                                 .from,
                                         },
                                     }}
-                                    // className={styles.AdditionatIfoLink}
                                     className={styles.AdditionatIfoLink}
                                     activeClassName={
                                         styles.AdditionatIfoLinkActive
@@ -150,4 +131,3 @@ class MovieDetailsPage extends Component {
 }
 
 export default withRouter(MovieDetailsPage)
-// { this.props.match.params.movieId}

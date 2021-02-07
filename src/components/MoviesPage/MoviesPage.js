@@ -4,8 +4,6 @@ import Axios from 'axios'
 import { withRouter, NavLink } from 'react-router-dom'
 import styles from './MoviesPage.module.css'
 
-// MoviesPage.propTypes = {}
-
 class MoviesPage extends Component {
     state = {
         searchName: '',
@@ -14,7 +12,6 @@ class MoviesPage extends Component {
 
     handleInput = (event) => {
         event.preventDefault()
-        // console.log(event.currentTarget.value)
         this.setState({ searchName: event.currentTarget.value })
     }
 
@@ -45,14 +42,11 @@ class MoviesPage extends Component {
     }
 
     render() {
-        // console.log(this.props.match.path)
-        // console.log(this.props.match.params.url)
         return (
             <div className={styles.MoviePageContainer}>
                 {/* <h1>"MoviesPage"</h1> */}
                 <form>
                     <input
-                        // className={}
                         type="text"
                         autoComplete="off"
                         autoFocus
@@ -63,14 +57,12 @@ class MoviesPage extends Component {
 
                     <button
                         type="submit"
-                        // className={styles.SearchFormButton}
                         onClick={this.handleSubmit}
                         className={styles.SearchButton}
                     >
                         <span>Search</span>
                     </button>
                 </form>
-                {/* {this.state.searchResult && <h1>test</h1>} */}
                 {this.state.searchResult && (
                     <ul>
                         {this.state.searchResult.map((movie) => (

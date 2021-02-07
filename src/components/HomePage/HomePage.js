@@ -15,12 +15,9 @@ class HomePage extends Component {
         )
 
         this.setState({ movies: response.data.results })
-        // console.log(this.state.movies)
-        // console.log('first mount')
     }
 
     render() {
-        // console.log(this.props.match.url)
         return (
             <div className={styles.HomePageContainer}>
                 <h1 className={styles.ListHeader}>Trending today</h1>

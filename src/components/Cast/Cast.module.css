@@ -6,11 +6,9 @@
 .MovieCastItem {
     width: 20%;
     list-style: none;
-    /* height: 200px; */
 }
 
 .CastProfile {
-    /* height: 30%; */
     width: 200px;
     height: 300px;
     object-fit: cover;
