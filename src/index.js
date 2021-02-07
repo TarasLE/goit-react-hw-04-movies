@@ -21,10 +21,10 @@ reportWebVitals()
 // console.log('test')
 
 // fetch(
-//     `https://api.themoviedb.org/3/trending/all/day?api_key=189de549f8a757089f82fa92809038d7`
+//     `https://api.themoviedb.org/3/search/movie?api_key=189de549f8a757089f82fa92809038d7&language=en-US&query=batman&page=1&include_adult=false`
 // )
 //     .then((res) => res.json())
 //     .then((data) => {
 //         console.log('in fetch')
-//         console.log(data)
+//         console.log(data.results)
 //     })

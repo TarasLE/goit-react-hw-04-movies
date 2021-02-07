@@ -24,8 +24,7 @@ class Cast extends Component {
                     <h1>"Cast"</h1>
                     <ul>
                         {this.state.cast.map((actor) => (
-                            <li>
-                                {' '}
+                            <li key={actor.id}>
                                 <img
                                     src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                                     alt=""

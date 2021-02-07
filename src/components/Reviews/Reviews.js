@@ -15,18 +15,23 @@ class Reviews extends Component {
 
         // console.log(response.data)
         this.setState({ reviews: response.data.results })
-        console.log(this.state.reviews)
+        // console.log(this.state.reviews)
     }
     render() {
-        if (this.state.reviews) {
-            console.log(this.state.reviews.length)
-        }
         return this.state.reviews && this.state.reviews.length > 0 ? (
             <div>
-                <h1>"Rewiev"</h1>
+                {/* <h1>"Rewiev"</h1> */}
+                <ul>
+                    {this.state.reviews.map((review) => (
+                        <li>
+                            <h1>{review.author}</h1>
+                            <p>{review.content}</p>
+                        </li>
+                    ))}
+                </ul>
             </div>
         ) : (
-            <h1>"None"</h1>
+            <p>We dont have any reviews for this movie</p>
         )
     }
 }

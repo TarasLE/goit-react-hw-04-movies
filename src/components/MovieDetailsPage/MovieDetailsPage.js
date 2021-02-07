@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
 import shortid from 'shortid'
@@ -13,6 +13,15 @@ class MovieDetailsPage extends Component {
 
     genId = () => {
         return this.shortid.generate()
+    }
+
+    clickBack = (event) => {
+        event.preventDefault()
+        this.props.history.push(this.props.location.state.from)
+
+        // event.preventDefault()
+
+        // this.setState({ searchName: event.currentTarget.value })
     }
 
     async componentDidMount() {
@@ -39,7 +48,9 @@ class MovieDetailsPage extends Component {
         return (
             this.state.movie && (
                 <div>
-                    <button type="button">Go back</button>
+                    <button type="button" onClick={this.clickBack}>
+                        Go back
+                    </button>
                     <div>
                         <img
                             src={`https://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`}
@@ -65,8 +76,14 @@ class MovieDetailsPage extends Component {
                         <h2>Adittional information</h2>
                         <ul>
                             <li>
-                                {' '}
-                                <NavLink to={`${this.props.match.url}/cast`}>
+                                <NavLink
+                                    to={{
+                                        pathname: `${this.props.match.url}/cast`,
+                                        state: {
+                                            from: this.props.location,
+                                        },
+                                    }}
+                                >
                                     Cast
                                 </NavLink>
                             </li>
@@ -89,5 +106,5 @@ class MovieDetailsPage extends Component {
     }
 }
 
-export default MovieDetailsPage
+export default withRouter(MovieDetailsPage)
 // { this.props.match.params.movieId}

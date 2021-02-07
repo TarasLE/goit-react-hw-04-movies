@@ -1,7 +1,7 @@
 import { React, Component } from 'react'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class HomePage extends Component {
     state = {
@@ -14,7 +14,7 @@ class HomePage extends Component {
         )
 
         this.setState({ movies: response.data.results })
-        console.log(this.state.movies)
+        // console.log(this.state.movies)
     }
 
     render() {
@@ -26,13 +26,23 @@ class HomePage extends Component {
                     {this.state.movies.map((movie) =>
                         movie.title ? (
                             <li key={movie.id}>
-                                <Link to={`/movies/${movie.id}`}>
+                                <Link
+                                    to={{
+                                        pathname: `/movies/${movie.id}`,
+                                        state: { from: this.props.location },
+                                    }}
+                                >
                                     {movie.title}
                                 </Link>
                             </li>
                         ) : (
                             <li key={movie.id}>
-                                <Link to={`/movies/${movie.id}`}>
+                                <Link
+                                    to={{
+                                        pathname: `/movies/${movie.id}`,
+                                        state: { from: this.props.location },
+                                    }}
+                                >
                                     {movie.name}{' '}
                                 </Link>
                             </li>
@@ -44,4 +54,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage
+export default withRouter(HomePage)
