@@ -22,7 +22,7 @@ class HomePage extends Component {
     render() {
         // console.log(this.props.match.url)
         return (
-            <div>
+            <div className={styles.HomePageContainer}>
                 <h1 className={styles.ListHeader}>Trending today</h1>
                 <ul>
                     {this.state.movies.map((movie) =>
