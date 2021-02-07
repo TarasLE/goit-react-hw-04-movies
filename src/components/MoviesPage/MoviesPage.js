@@ -44,7 +44,6 @@ class MoviesPage extends Component {
     render() {
         return (
             <div className={styles.MoviePageContainer}>
-                {/* <h1>"MoviesPage"</h1> */}
                 <form>
                     <input
                         type="text"

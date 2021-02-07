@@ -1,0 +1,2 @@
+ "homepage": "https://TarasLE.github.io/goit-react-hw-04-movies",
+  "deploy": "gh-pages -d build"
