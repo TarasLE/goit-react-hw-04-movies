@@ -2,6 +2,7 @@ import { React, Component } from 'react'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
 import { withRouter, NavLink } from 'react-router-dom'
+import queryString from 'query-string'
 import styles from './MoviesPage.module.css'
 
 class MoviesPage extends Component {
@@ -16,14 +17,12 @@ class MoviesPage extends Component {
     }
 
     handleSubmit = (event) => {
-        const currentInput = this.state.searchName.trim()
-        if (currentInput) {
-            event.preventDefault()
-            this.searchMovies(this.state.searchName)
-        } else {
-            event.preventDefault()
-            return
-        }
+        event.preventDefault()
+        this.props.history.push({
+            pathname: this.props.location.pathname,
+            search: `query=${this.state.searchName}`,
+        })
+        this.searchMovies(this.state.searchName)
     }
 
     searchMovies = async (movie) => {
@@ -35,9 +34,21 @@ class MoviesPage extends Component {
     }
 
     componentDidMount() {
-        if (this.props.location.state) {
-            this.setState({ searchName: this.props.location.state.searchName })
-            this.searchMovies(this.props.location.state.searchName)
+        const { query } = queryString.parse(this.props.location.search)
+        if (query) {
+            this.searchMovies(query)
+        }
+    }
+
+    componentDidUpdate(prevProps, PrevState) {
+        const { query: prevQuery } = queryString.parse(
+            prevProps.location.search
+        )
+        const { query: nextQuery } = queryString.parse(
+            this.props.location.search
+        )
+        if (prevQuery !== nextQuery) {
+            this.searchMovies(nextQuery)
         }
     }
 
@@ -71,7 +82,6 @@ class MoviesPage extends Component {
                                         pathname: `${this.props.match.url}/${movie.id}`,
                                         state: {
                                             from: this.props.location,
-                                            searchName: this.state.searchName,
                                         },
                                     }}
                                 >

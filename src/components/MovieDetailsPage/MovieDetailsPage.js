@@ -2,7 +2,6 @@ import React, { Component, Suspense, lazy } from 'react'
 import { Route, NavLink, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Axios from 'axios'
-import shortid from 'shortid'
 import styles from './MovieDetailsPage.module.css'
 
 const Cast = lazy(() =>
@@ -18,13 +17,11 @@ class MovieDetailsPage extends Component {
         movie: null,
     }
 
-    genId = () => {
-        return this.shortid.generate()
-    }
-
     clickBack = (event) => {
         event.preventDefault()
-        this.props.history.push(this.props.location.state.from)
+        if (this.props.location.state && this.props.location.state.from) {
+            this.props.history.push(this.props.location.state.from)
+        }
     }
 
     async componentDidMount() {
