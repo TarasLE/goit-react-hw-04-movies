@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Reviews/Reviews.module.css"],"names":[],"mappings":"AAAA,6BACI,eACJ","file":"mivie-review.afa63a59.chunk.css","sourcesContent":[".ReviewAuthor {\r\n    list-style: none;\r\n}\r\n"]}
