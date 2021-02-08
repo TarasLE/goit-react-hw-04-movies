@@ -22,35 +22,20 @@ class HomePage extends Component {
             <div className={styles.HomePageContainer}>
                 <h1 className={styles.ListHeader}>Trending today</h1>
                 <ul>
-                    {this.state.movies.map((movie) =>
-                        movie.title ? (
-                            <li key={movie.id} className={styles.MovieItem}>
-                                <NavLink
-                                    to={{
-                                        pathname: `/movies/${movie.id}`,
-                                        state: { from: this.props.location },
-                                    }}
-                                    className={styles.MovieLink}
-                                    activeClassName={styles.MovieLinkActive}
-                                >
-                                    {movie.title}
-                                </NavLink>
-                            </li>
-                        ) : (
-                            <li key={movie.id} className={styles.MovieItem}>
-                                <NavLink
-                                    to={{
-                                        pathname: `/movies/${movie.id}`,
-                                        state: { from: this.props.location },
-                                    }}
-                                    className={styles.MovieLink}
-                                    activeClassName={styles.MovieLinkActive}
-                                >
-                                    {movie.name}
-                                </NavLink>
-                            </li>
-                        )
-                    )}
+                    {this.state.movies.map((movie) => (
+                        <li key={movie.id} className={styles.MovieItem}>
+                            <NavLink
+                                to={{
+                                    pathname: `/movies/${movie.id}`,
+                                    state: { from: this.props.location },
+                                }}
+                                className={styles.MovieLink}
+                                activeClassName={styles.MovieLinkActive}
+                            >
+                                {movie.title ? movie.title : movie.name}
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
             </div>
         )
